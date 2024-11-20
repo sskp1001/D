@@ -1,0 +1,136 @@
+
+Signup.js
+
+import React, { useState } from 'react';
+export default function Signup() {
+ const [name, setName] = useState("");
+ const [id, setId] = useState("");
+ const [password, setPassword] = useState("");
+ const [submit, setSubmit] = useState(false);
+ function handleName(e) {
+ setName(e.target.value);
+ }
+ function handleId(e) {
+ setId(e.target.value);
+ }
+ function handlePassword(e) {
+ setPassword(e.target.value);
+ }
+ function handleSubmit(e) {
+ e.preventDefault();
+ if (name === '' || id === '' || password === '') {
+ alert("Please enter all the fields");
+ } else {
+ setSubmit(true);
+ clearAll();
+ }
+ }
+
+ function clearAll() {
+ setName("");
+ setId("");
+ setPassword("");
+ }
+ function successMessage() {
+ if (submit) {
+ return (
+ <div>
+ <p id="p">User {name} signed up successfully</p>
+ </div>
+ );
+ }
+ }
+ return (
+ <div>
+ <div className="form">
+ <form onSubmit={handleSubmit}>
+ <div id="d1">
+ <p>Signup</p>
+ </div>
+ <label htmlFor="UserName">User Name</label>
+<input type="text" id="name" name="UserName" value={name}
+onChange={handleName} />
+ <label htmlFor="EmailId">Email Id</label>
+<input type="email" id="id" name="EmailId" value={id} 
+onChange={handleId} />
+ <label htmlFor="Password">Password</label>
+<input type="password" id="psw" name="Password" value={password} 
+onChange={handlePassword} />
+ <button type="submit" id="btn">Create Account</button>
+ </form>
+ </div>
+ <div id="success">
+ {successMessage()}
+ </div>
+ </div>
+ );
+}
+
+
+App.js
+import React from 'react';
+import './App.css';
+import Signup from './Signup';
+export default function App() {
+ return (
+ <div>
+ <Signup />
+ </div>
+ );
+}
+
+
+App.css
+body {
+ padding: 0;
+ margin: 0;
+ background-color: white;
+}
+.form {
+ padding: 16px;
+ margin: 16px;
+ border-style: solid;
+ border-color: white;
+ background-color: white;
+ box-shadow: 0px 0px 5px 0px black;
+}
+label {
+ display: block;
+ font-family: 'Times New Roman', Times, serif;
+ color: rgb(35, 18, 65);
+ font-size: 12px;
+ font-weight: 550;
+
+ line-height: 20px;
+}
+input {
+ border-color: black;
+ border-radius: 5px;
+ font-family: 'Times New Roman', Times, serif;
+ background-color: rgb(244, 240, 240);
+}
+#btn {
+ margin-top: 15px;
+ color: white;
+ border-style: double;
+ border-color: #2b2dd1;
+ background-color: #2b2dd1;
+ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ padding: 10px 20px;
+ cursor: pointer;
+}
+div #d1 {
+ text-align: center;
+ color: #080939;
+ font-family: 'Times New Roman', Times, serif;
+ font-weight: 850;
+ margin-bottom: 15px;
+ font-size: 23px;
+}
+div #success p {
+ text-align: center;
+ padding-right: 0px;
+ color: rgb(34, 8, 86);
+ font-family: 'Times New Roman', Times, serif;
+ font-weight: 600;
+}

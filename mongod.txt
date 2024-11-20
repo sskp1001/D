@@ -1,0 +1,104 @@
+
+@Data
+@Document(collection="mongo")
+@NoArgsConstructor
+@AllArgsConstructor
+public class entityy {
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	@Id
+	private int id;
+	
+	private String name;
+	
+	private String address;
+
+}
+
+
+
+
+@RestController
+public class controll {
+	
+	@Autowired
+	private repo obj;
+	
+	@GetMapping("/get")
+	public List<entityy> get(){
+		return obj.findAll();
+	}
+	
+	@PostMapping("/post")
+	public String post(@RequestBody entityy E) {
+		obj.save(E);
+		return "inserted";
+	}
+	
+	@PutMapping("/put/{id}")
+	public String put(@PathVariable int id, @RequestBody entityy B) {
+		entityy put = obj.findById(id).orElse(null);
+		if(put != null) {
+			put.setId(B.getId());
+			put.setName(B.getName());
+			put.setAddress(B.getAddress());
+			
+			obj.save(put);
+			return "Updated";
+			}
+		else {
+			return "Not Null";
+		}
+	}
+	
+	
+	@DeleteMapping("/del/{id}")
+	public String del(@PathVariable int id) {
+		if(obj.existsById(id)){
+			obj.deleteById(id);
+			
+			return "Deleted";
+			
+		}else {
+			return "Not Found";
+		}
+	}
+	
+}
+
+
+
+
+public interface repo extends MongoRepository <entityy , Integer> {
+
+}
+
+
+
+spring.application.name=mongo
+spring.data.mongodb.port=27017
+spring.data.mongodb.host=localhost
+spring.data.mongodb.database=kushal
