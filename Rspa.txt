@@ -82,52 +82,63 @@ export default function App() {
 
 App.css
 body {
- padding: 0;
- margin: 0;
- background-color: white;
-}
-.form {
- padding: 16px;
- margin: 16px;
- border-style: solid;
- border-color: white;
- background-color: white;
- box-shadow: 0px 0px 5px 0px black;
-}
-label {
- display: block;
- font-family: 'Times New Roman', Times, serif;
- color: rgb(35, 18, 65);
- font-size: 12px;
- font-weight: 550;
-
- line-height: 20px;
-}
-input {
- border-color: black;
- border-radius: 5px;
- font-family: 'Times New Roman', Times, serif;
- background-color: rgb(244, 240, 240);
-}
-#btn {
- margin-top: 15px;
- color: white;
- border-style: double;
- border-color: #2b2dd1;
- background-color: #2b2dd1;
- font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
- padding: 10px 20px;
- cursor: pointer;
-}
-div #d1 {
- text-align: center;
- color: #080939;
- font-family: 'Times New Roman', Times, serif;
- font-weight: 850;
- margin-bottom: 15px;
- font-size: 23px;
-}
-div #success p {
+  padding: 0;
+  margin: 0;
+  background-color:cyan;
+ }
+ h1 {
+  text-align: center;
+  font-variant: small-caps;
+  text-shadow: 0px 1px;
+  color: rgb(85, 85, 156);
+  font-family: 'Times New Roman', Times, serif;
+ }
+ .form {
+  padding: 16px;
+  margin: 16px;
+  border-style: solid;
+  border-color: olivedrab;
+  background-color: rgb(237, 238, 236);
+  box-shadow: 0px 0px 3px 0px black;
+ }
+ 
+ label {
+  display: block;
+  font-family: 'Times New Roman', Times, serif;
+  color: green;
+  font-size: 12px;
+  font-weight: 550;
+  line-height: 30px;
+  margin-left: 300px;
+ }
+ input {
+  border-color: black;
+  border-radius: 3px;
+  background-color: rgb(244, 240, 240);
+  font-family: 'Times New Roman', Times, serif;
+  padding: 5px;
+  margin-bottom: 10px;
+  margin-left: 300px;
+ }
+ button {
+  padding: 3px 20px;
+  margin-top: 15px;
+  color: white;
+  border-style: double;
+  border-color: #dbf5da;
+  background-color: #35e14c;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  cursor: pointer;
+  margin-left:300px;
+ }
+ div #d1 {
+  text-align: center;
+  color: rgb(85, 50, 156);
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 750;
+  margin-top: 15px;
+ }
+ div #success p {
  text-align: center;
  padding-right: 0px;
  color: rgb(34, 8, 86);
