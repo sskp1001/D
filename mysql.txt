@@ -64,10 +64,50 @@ public class controll {
 	}
 }
 
-pring.application.name=cruds
+spring.application.name=cruds
 spring.datasource.url=jdbc:mysql://localhost:3306/land
 spring.datasource.username=root
 spring.datasource.password=root
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
 spring.jpa.hibernate.ddl-auto=update
+
+
+
+@SpringBootTest
+class test {
+	
+	@Autowired
+	repo obj;
+
+	@Test
+	public void create() {
+		enityy e = new enityy ();
+		e.setId();
+		e.setName("");
+		e.setAge("");
+		obj.save(e);
+		assertNotNull(obj.findById(2).get());
+	}
+	
+	@Test
+	public void list() {
+		List<enityy> list = obj.findAll();
+		assertThat(list).size().isGreaterThan(0);
+	}
+
+	@Test
+	public void upd() {
+		enityy b = obj.findById().get();
+		
+		b.setName("");
+		obj.save(b);
+		assertNotEquals("yamn", obj.findById().get().getName());
+	}
+	
+	@Test
+	public void del() {
+		obj.deleteById(1);
+		assertThat(obj.existsById()).isFalse();
+	}
+}
