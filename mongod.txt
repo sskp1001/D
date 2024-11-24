@@ -102,3 +102,42 @@ spring.application.name=mongo
 spring.data.mongodb.port=27017
 spring.data.mongodb.host=localhost
 spring.data.mongodb.database=kushal
+
+
+@SpringBootTest
+class test {
+	
+	@Autowired
+	repo obj;
+
+	@Test
+	public void create() {
+		enityy e = new enityy ();
+		e.setId();
+		e.setName("");
+		e.setAge("");
+		obj.save(e);
+		assertNotNull(obj.findById(2).get());
+	}
+	
+	@Test
+	public void list() {
+		List<enityy> list = obj.findAll();
+		assertThat(list).size().isGreaterThan(0);
+	}
+
+	@Test
+	public void upd() {
+		enityy b = obj.findById().get();
+		
+		b.setName("");
+		obj.save(b);
+		assertNotEquals("yamn", obj.findById().get().getName());
+	}
+	
+	@Test
+	public void del() {
+		obj.deleteById(1);
+		assertThat(obj.existsById()).isFalse();
+	}
+}
